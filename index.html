@@ -95,17 +95,17 @@
 <li>使用signal（SIGCHLD，SIG_IGN）通知内核，让内核对子进程的资源进行回收。</li>
 <li>父进程fork一个子进程后使用wait/waitpid，子进程fork一个孙进程后退出，那么孙进程将会被init接管，孙进程结束后，init会回收。</li>
 </ol>
-<h2 id="查看系统中的僵尸进程"><a href="#查看系统中的僵尸进程" class="headerlink" title="查看系统中的僵尸进程"></a>查看系统中的僵尸进程</h2><blockquote>
-<p>ps命令，其命令格式： ps [选项]，<br> 选项：-e 显示所有进程,环境变量，-f 全格式，-h 不显示标题 ,<br> -l 长格式, -w 宽输出, a 显示终端上地所有进程,包括其他用户地进程<br>, r 只显示正在运行地进程<br>,x 显示没有控制终端地进程</p>
-</blockquote>
-<ul>
-<li>$ ps -el 其中，有标记为Z的进程就是僵尸进程 S代表休眠状态；D代表不可中断的休眠状态；R代表运行状态；Z代表僵死状态；T代表停止或跟踪状态</li>
+<h2 id="查看系统中的僵尸进程"><a href="#查看系统中的僵尸进程" class="headerlink" title="查看系统中的僵尸进程"></a>查看系统中的僵尸进程</h2><ul>
+<li><p>ps命令，其命令格式： ps [选项]，<br>选项：-e 显示所有进程,环境变量，-f 全格式，-h 不显示标题 ,<br>-l 长格式, -w 宽输出, a 显示终端上地所有进程,包括其他用户地进程<br>, r 只显示正在运行地进程<br>,x 显示没有控制终端地进程</p>
+</li>
+<li><p>$ ps -el 其中，有标记为Z的进程就是僵尸进程 S代表休眠状态；D代表不可中断的休眠状态；R代表运行状态；Z代表僵死状态；T代表停止或跟踪状态</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/僵尸进程/" data-id="cis0djmaa0001k0l1eei59ffu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/18/僵尸进程/" data-id="cis0dl5sx0001t8l1c5i0zss1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/My-first-blog/" data-id="cis0djma40000k0l1olglru36" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/18/My-first-blog/" data-id="cis0dl5sn0000t8l18cxm5g3h" class="article-share-link">Share</a>
       
       
     </footer>
