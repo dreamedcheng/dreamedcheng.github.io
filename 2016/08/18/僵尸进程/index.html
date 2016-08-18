@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>点滴</title>
+  <title>僵尸进程 | 点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="点滴">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="UNIX System 僵尸进程
+在UNIX 系统中，一个进程结束了，但是他的父进程没有等待(调用wait / waitpid)他， 那么他将变成一个僵尸进程。 但是如果该进程的父进程已经先结束了，那么该进程就不会变成僵尸进程， 因为每个进程结束的时候，系统都会扫描当前系统中所运行的所有进程， 看有没有哪个进程是刚刚结束的这个进程的子进程，如果是的话，就由Init 来接管他，成为他的父进程。–">
+<meta property="og:type" content="article">
+<meta property="og:title" content="僵尸进程">
+<meta property="og:url" content="http://yoursite.com/2016/08/18/僵尸进程/index.html">
 <meta property="og:site_name" content="点滴">
+<meta property="og:description" content="UNIX System 僵尸进程
+在UNIX 系统中，一个进程结束了，但是他的父进程没有等待(调用wait / waitpid)他， 那么他将变成一个僵尸进程。 但是如果该进程的父进程已经先结束了，那么该进程就不会变成僵尸进程， 因为每个进程结束的时候，系统都会扫描当前系统中所运行的所有进程， 看有没有哪个进程是刚刚结束的这个进程的子进程，如果是的话，就由Init 来接管他，成为他的父进程。–">
+<meta property="og:updated_time" content="2016-08-18T13:39:56.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="点滴">
+<meta name="twitter:title" content="僵尸进程">
+<meta name="twitter:description" content="UNIX System 僵尸进程
+在UNIX 系统中，一个进程结束了，但是他的父进程没有等待(调用wait / waitpid)他， 那么他将变成一个僵尸进程。 但是如果该进程的父进程已经先结束了，那么该进程就不会变成僵尸进程， 因为每个进程结束的时候，系统都会扫描当前系统中所运行的所有进程， 看有没有哪个进程是刚刚结束的这个进程的子进程，如果是的话，就由Init 来接管他，成为他的父进程。–">
   
     <link rel="alternate" href="/atom.xml" title="点滴" type="application/atom+xml">
   
@@ -59,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-僵尸进程" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-僵尸进程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/18/僵尸进程/" class="article-date">
   <time datetime="2016-08-18T13:39:33.000Z" itemprop="datePublished">2016-08-18</time>
@@ -74,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/18/僵尸进程/">僵尸进程</a>
+    <h1 class="article-title" itemprop="name">
+      僵尸进程
     </h1>
   
 
@@ -111,52 +116,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-My-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/18/My-first-blog/" class="article-date">
-  <time datetime="2016-08-18T08:52:22.000Z" itemprop="datePublished">2016-08-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/18/My-first-blog/">My first blog</a>
-    </h1>
+    <a href="/2016/08/18/My-first-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">My first blog</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="这是我的第一篇博客"><a href="#这是我的第一篇博客" class="headerlink" title="这是我的第一篇博客"></a>这是我的第一篇博客</h1><h3 id="为什开始记录我的博客，原因如下"><a href="#为什开始记录我的博客，原因如下" class="headerlink" title="为什开始记录我的博客，原因如下"></a>为什开始记录我的博客，原因如下</h3><ol>
-<li>养成记录的习惯，并在此过程中加深对知识的理解</li>
-<li>和人们分享</li>
-<li>希望在和别人的交流和分享中提高自己</li>
-</ol>
-<h3 id="最后希望自己能够坚持下来"><a href="#最后希望自己能够坚持下来" class="headerlink" title="最后希望自己能够坚持下来"></a>最后希望自己能够坚持下来</h3><hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/My-first-blog/" data-id="cis0djma40000k0l1olglru36" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
