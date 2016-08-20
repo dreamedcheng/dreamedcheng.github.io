@@ -15,7 +15,7 @@
 <meta property="og:description" content="求字符串的最长回文子串的线性算法–Manacher算法
 首先对原字符串进行改造，比如对字符创“12345”改造之后，变成“$#1#2#3#4#5#”，第一个字符‘$’用于边界的判断，而字符‘#’的引入则是可以将原字符串转化成一个偶数的字符串（不包括‘$’），这样的好处就是转化之后的字符串的字符个数一定为奇数（不包含’$’），就可以不必分情况讨论原字符串为奇数和偶数的情况。
 算法中引入数组变量p[i">
-<meta property="og:updated_time" content="2016-08-20T02:50:26.177Z">
+<meta property="og:updated_time" content="2016-08-20T02:52:19.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大回文子串算法-Manacher">
 <meta name="twitter:description" content="求字符串的最长回文子串的线性算法–Manacher算法
@@ -94,13 +94,14 @@
         <h1 id="求字符串的最长回文子串的线性算法–Manacher算法"><a href="#求字符串的最长回文子串的线性算法–Manacher算法" class="headerlink" title="求字符串的最长回文子串的线性算法–Manacher算法"></a>求字符串的最长回文子串的线性算法–Manacher算法</h1><ul>
 <li>首先对原字符串进行改造，比如对字符创“12345”改造之后，变成“$#1#2#3#4#5#”，第一个字符‘$’用于边界的判断，而字符‘#’的引入则是可以将原字符串转化成一个偶数的字符串（不包括‘$’），这样的好处就是转化之后的字符串的字符个数一定为奇数（不包含’$’），就可以不必分情况讨论原字符串为奇数和偶数的情况。</li>
 <li>算法中引入数组变量p[i]，用于记录以第i个字符为中心的回文子串向左/向右的长度（包括i位置上字符），另外使用变量id来记录最大回文子串的中心位置，mx记录id+p[id]，即该最大回文子串的上边界。</li>
-<li>对于每个字符，进行判断：</li>
+<li><p>对于每个字符，进行判断：</p>
+<ul>
+<li>当i &lt; mx时，查看i关于id的对称位置 j = 2*id - 1的p[j]是否小于mx-i，如果小于，又回文串的性质可知，p[i] &gt;= p[j], 否则，p[i] &gt;= mx-i。</li>
+<li>当i&gt;mx时，不能利用到最大回文子串的信息，p[i] = 1。</li>
 </ul>
-<pre><code>- 当i &lt; mx时，查看i关于id的对称位置 j = 2*id - 1的p[j]是否小于mx-i，如果小于，又回文串的性质可知，p[i] &gt;= p[j], 否则，p[i] &gt;= mx-i。
-
-
-- 当i&gt;mx时，不能利用到最大回文子串的信息，p[i] = 1。
-</code></pre><ul>
+</li>
+</ul>
+<ul>
 <li>最后依次判断i+p[i]和i-p[i]的位置是否相等来更新p[i]的值。</li>
 </ul>
 <h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2><pre><code>string longestSubPalindromic (string s) {
@@ -158,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/" data-id="cis2l7xa800015sl1auymq2zn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/" data-id="cis2lacg70001w8l1tk1og74g" class="article-share-link">Share</a>
       
       
     </footer>
