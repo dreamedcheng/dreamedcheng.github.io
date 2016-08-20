@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>点滴</title>
+  <title>最大回文子串算法-Manacher | 点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="点滴">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="求字符串的最长回文子串的线性算法–Manacher算法
+首先对原字符串进行改造，比如对字符创“12345”改造之后，变成“$#1#2#3#4#5#”，第一个字符‘$’用于边界的判断，而字符‘#’的引入则是可以将原字符串转化成一个偶数的字符串（不包括‘$’），这样的好处就是转化之后的字符串的字符个数一定为奇数（不包含’$’），就可以不必分情况讨论原字符串为奇数和偶数的情况。
+算法中引入数组变量p[i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最大回文子串算法-Manacher">
+<meta property="og:url" content="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/index.html">
 <meta property="og:site_name" content="点滴">
+<meta property="og:description" content="求字符串的最长回文子串的线性算法–Manacher算法
+首先对原字符串进行改造，比如对字符创“12345”改造之后，变成“$#1#2#3#4#5#”，第一个字符‘$’用于边界的判断，而字符‘#’的引入则是可以将原字符串转化成一个偶数的字符串（不包括‘$’），这样的好处就是转化之后的字符串的字符个数一定为奇数（不包含’$’），就可以不必分情况讨论原字符串为奇数和偶数的情况。
+算法中引入数组变量p[i">
+<meta property="og:updated_time" content="2016-08-20T02:46:38.585Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="点滴">
+<meta name="twitter:title" content="最大回文子串算法-Manacher">
+<meta name="twitter:description" content="求字符串的最长回文子串的线性算法–Manacher算法
+首先对原字符串进行改造，比如对字符创“12345”改造之后，变成“$#1#2#3#4#5#”，第一个字符‘$’用于边界的判断，而字符‘#’的引入则是可以将原字符串转化成一个偶数的字符串（不包括‘$’），这样的好处就是转化之后的字符串的字符个数一定为奇数（不包含’$’），就可以不必分情况讨论原字符串为奇数和偶数的情况。
+算法中引入数组变量p[i">
   
     <link rel="alternate" href="/atom.xml" title="点滴" type="application/atom+xml">
   
@@ -59,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-最大回文子串算法-Manacher" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-最大回文子串算法-Manacher" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/19/最大回文子串算法-Manacher/" class="article-date">
   <time datetime="2016-08-19T09:27:39.000Z" itemprop="datePublished">2016-08-19</time>
@@ -74,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/19/最大回文子串算法-Manacher/">最大回文子串算法-Manacher</a>
+    <h1 class="article-title" itemprop="name">
+      最大回文子串算法-Manacher
     </h1>
   
 
@@ -158,64 +166,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-僵尸进程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/18/僵尸进程/" class="article-date">
-  <time datetime="2016-08-18T13:39:33.000Z" itemprop="datePublished">2016-08-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/18/僵尸进程/">僵尸进程</a>
-    </h1>
+    <a href="/2016/08/18/僵尸进程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">僵尸进程</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="UNIX-System-僵尸进程"><a href="#UNIX-System-僵尸进程" class="headerlink" title="UNIX System 僵尸进程"></a>UNIX System 僵尸进程</h1><ul>
-<li>在UNIX 系统中，一个进程结束了，但是他的父进程没有等待(调用wait / waitpid)他， 那么他将变成一个僵尸进程。 但是如果该进程的父进程已经先结束了，那么该进程就不会变成僵尸进程， 因为每个进程结束的时候，系统都会扫描当前系统中所运行的所有进程， 看有没有哪个进程是刚刚结束的这个进程的子进程，如果是的话，就由Init 来接管他，成为他的父进程。–  摘自百度百科</li>
-</ul>
-<h2 id="僵尸进程的危害"><a href="#僵尸进程的危害" class="headerlink" title="僵尸进程的危害"></a>僵尸进程的危害</h2><ul>
-<li>对于每个进程，系统都会为其分配系统资源（如：pid，打开的文件，栈空间等等），如果子进程结束时，父进程没有对子进程的资源进行释放，子进程的资源就会一直被系统保留，不能再作他用，而且系统所能使用的进程号是有限的，如果产生大量的僵尸进程，将可能导致系统无法在产生新的进程。</li>
-</ul>
-<h2 id="僵尸进程的避免方法"><a href="#僵尸进程的避免方法" class="headerlink" title="僵尸进程的避免方法"></a>僵尸进程的避免方法</h2><ol>
-<li>父进程使用wait/waitpid等函数等待子进程结束，其缺点是会使得父进程阻塞。</li>
-<li>使用signal函数为SIGCHLD声明handler，这样子进程结束后，父进程会受到信号，调用handler来对子进程的资源进行回收。</li>
-<li>使用signal（SIGCHLD，SIG_IGN）通知内核，让内核对子进程的资源进行回收。</li>
-<li>父进程fork一个子进程后使用wait/waitpid，子进程fork一个孙进程后退出，那么孙进程将会被init接管，孙进程结束后，init会回收。</li>
-</ol>
-<h2 id="查看系统中的僵尸进程"><a href="#查看系统中的僵尸进程" class="headerlink" title="查看系统中的僵尸进程"></a>查看系统中的僵尸进程</h2><ul>
-<li><p>ps命令，其命令格式： ps [选项]，<br>选项：-e 显示所有进程,环境变量，-f 全格式，-h 不显示标题 ,<br>-l 长格式, -w 宽输出, a 显示终端上地所有进程,包括其他用户地进程<br>, r 只显示正在运行地进程<br>,x 显示没有控制终端地进程</p>
-</li>
-<li><p>$ ps -el 其中，有标记为Z的进程就是僵尸进程 S代表休眠状态；D代表不可中断的休眠状态；R代表运行状态；Z代表僵死状态；T代表停止或跟踪状态</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/僵尸进程/" data-id="cis2l39z3000044l13621ub8o" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
