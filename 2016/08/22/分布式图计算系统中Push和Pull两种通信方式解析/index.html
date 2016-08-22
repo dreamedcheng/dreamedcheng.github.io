@@ -21,7 +21,7 @@ Pull通信模型
 首先所有的vertices（包括主vertex，mirror vertex）都会在本地遍历其入边，计算">
 <meta property="og:image" content="http://yoursite.com/./img/push&pull.png">
 <meta property="og:image" content="http://yoursite.com/./img/alg.png">
-<meta property="og:updated_time" content="2016-08-22T12:09:03.285Z">
+<meta property="og:updated_time" content="2016-08-22T12:10:23.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式图计算系统中Push和Pull两种通信方式解析">
 <meta name="twitter:description" content="Push通信模型
@@ -109,7 +109,7 @@ Pull通信模型
 <p>如图，展示了Push和Pull两种通信计算模型（左图为Push，右图为Pull，图片引自Gemini(OSDI’16)）。</p>
 <p><img src="./img/push&amp;pull.png" alt="Push和Pull通信计算模型图"></p>
 <h2 id="两种模型的比较"><a href="#两种模型的比较" class="headerlink" title="两种模型的比较"></a>两种模型的比较</h2><ul>
-<li>下图展示了分别用以上两种计算模型运行PageRank算法和WCC（Weakly Connected Components）算法的结果，从图中可以看出对于PageRank算法而言，由于每次迭代有效地活跃边占图中总的比重一直比较大，使用Pull的性能要远好于使用Push，对于WCC而言，在开始几次迭代，活跃的边数较多，Pull模型的性能更好，随着算法加速收敛，活跃边数急剧减少，Push的性能更加。</li>
+<li>下图展示了分别用以上两种计算模型运行PageRank算法和CC（Connected Components）算法的结果，从图中可以看出对于PageRank算法而言，由于每次迭代有效地活跃边占图中总的比重一直比较大，使用Pull的性能要远好于使用Push，对于WCC而言，在开始几次迭代，活跃的边数较多，Pull模型的性能更好，随着算法加速收敛，活跃边数急剧减少，Push的性能更加。</li>
 </ul>
 <p><img src="./img/alg.png" alt="Push和Pull通信计算模型在PR和WCC上性能比较"></p>
 <ul>
@@ -119,7 +119,7 @@ Pull通信模型
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/22/分布式图计算系统中Push和Pull两种通信方式解析/" data-id="cis601zvt0001vsl1pz9jnfzg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/22/分布式图计算系统中Push和Pull两种通信方式解析/" data-id="cis603qg000012gl1hy4d0vuy" class="article-share-link">Share</a>
       
       
     </footer>
