@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>点滴</title>
+  <title>Galaxy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="点滴">
+<meta property="og:title" content="Galaxy">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="点滴">
+<meta property="og:site_name" content="Galaxy">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="点滴">
+<meta name="twitter:title" content="Galaxy">
   
-    <link rel="alternate" href="/atom.xml" title="点滴" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Galaxy" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -33,7 +33,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">点滴</a>
+        <a href="/" id="logo">Galaxy</a>
       </h1>
       
     </div>
@@ -60,6 +60,50 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-分布式图计算系统中Push和Pull两种通信方式解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/22/分布式图计算系统中Push和Pull两种通信方式解析/" class="article-date">
+  <time datetime="2016-08-22T08:25:55.000Z" itemprop="datePublished">2016-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/22/分布式图计算系统中Push和Pull两种通信方式解析/">分布式图计算系统中Push和Pull两种通信方式解析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Push通信模型"><a href="#Push通信模型" class="headerlink" title="Push通信模型"></a>Push通信模型</h1><ul>
+<li>当vertex有更新时，该vertex就会把自己的更新信息通过通信传递给在其它worker节点上的mirror vertex。随后主vertex和mirror vertex会遍历其出边，将更新信息传递给出边的邻vertices。典型的代表系统：Pregel。</li>
+</ul>
+<h1 id="Pull通信模型"><a href="#Pull通信模型" class="headerlink" title="Pull通信模型"></a>Pull通信模型</h1><ul>
+<li>首先所有的vertices（包括主vertex，mirror vertex）都会在本地遍历其入边，计算更新信息，然后mirror vertex将它们的跟新信息传递给其主vertex。典型的代表系统：PowerGraph。</li>
+</ul>
+<p>如图，展示了Push和Pull两种通信计算模型（左图为Push，右图为Pull）。</p>
+<p><img src="./push&amp;pull.png" alt="Push和Pull通信计算模型图"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/22/分布式图计算系统中Push和Pull两种通信方式解析/" data-id="cis5z43x20001kol1mvm3chqr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-最大回文子串算法-Manacher" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -96,12 +140,12 @@
 <ul>
 <li>最后依次判断i+p[i]和i-p[i]的位置是否相等来更新p[i]的值。</li>
 </ul>
-<h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (s.size() &lt; <span class="number">2</span>) <span class="keyword">return</span> s;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> len = <span class="number">3</span>*s.size() + <span class="number">3</span>;</div><div class="line">	<span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">(len)</span></span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</div><div class="line">           str[<span class="number">2</span>*i+<span class="number">2</span>] = s[i];</div><div class="line">	&#125;</div><div class="line">	str[<span class="number">0</span>] = <span class="string">'$'</span>;</div><div class="line">	</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; p(str.size());</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> id = <span class="number">0</span>, mx = <span class="number">0</span>;</div><div class="line">       </div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= str.size(); i++) &#123;</div><div class="line">           <span class="keyword">if</span> (mx &gt; i) &#123;</div><div class="line">               p[i] = (p[<span class="number">2</span>*id-i]) &lt; (mx-i) ? (p[<span class="number">2</span>*id-i]) : (mx - i);</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">else</span> &#123;</div><div class="line">               p[i] = <span class="number">1</span>;</div><div class="line">           &#125;</div><div class="line">           </div><div class="line">           <span class="keyword">while</span> (str[i-p[i]] == str[i+p[i]])</div><div class="line">               p[i]++;</div><div class="line">           </div><div class="line">           <span class="keyword">if</span> (i+p[i] &gt; mx ) &#123;</div><div class="line">               mx = i + p[i];</div><div class="line">               id = i;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="keyword">int</span> m = <span class="number">0</span>, ii;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.size(); i++) &#123;</div><div class="line">           <span class="keyword">if</span> (p[i] &gt; m) &#123;</div><div class="line">               ii = i;</div><div class="line">               m = p[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       m--;</div><div class="line">       </div><div class="line">       <span class="built_in">string</span> ans = <span class="string">""</span>;</div><div class="line">       <span class="comment">//cout &lt;&lt; m &lt;&lt; " " &lt;&lt; ii &lt;&lt;endl;</span></div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = ii - m; i &lt;= ii + m; i++) &#123;</div><div class="line">           <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">           <span class="keyword">if</span> (str[i] != <span class="string">'#'</span>)</div><div class="line">               ans += str[i];</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="comment">//cout &lt;&lt; ans &lt;&lt; endl;</span></div><div class="line">       <span class="keyword">return</span> ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (s.size() &lt; <span class="number">2</span>) <span class="keyword">return</span> s;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> len = <span class="number">3</span>*s.size() + <span class="number">3</span>;</div><div class="line">	<span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">(len)</span></span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</div><div class="line">           str[<span class="number">2</span>*i+<span class="number">2</span>] = s[i];</div><div class="line">	&#125;</div><div class="line">	str[<span class="number">0</span>] = <span class="string">'$'</span>;</div><div class="line">	</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; p(str.size());</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> id = <span class="number">0</span>, mx = <span class="number">0</span>;</div><div class="line">       </div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= str.size(); i++) &#123;</div><div class="line">           <span class="keyword">if</span> (mx &gt; i) &#123;</div><div class="line">               p[i] = (p[<span class="number">2</span>*id-i]) &lt; (mx-i) ? (p[<span class="number">2</span>*id-i]) : (mx - i);</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">else</span> &#123;</div><div class="line">               p[i] = <span class="number">1</span>;</div><div class="line">           &#125;</div><div class="line">           </div><div class="line">           <span class="keyword">while</span> (str[i-p[i]] == str[i+p[i]])</div><div class="line">               p[i]++;</div><div class="line">           </div><div class="line">           <span class="keyword">if</span> (i+p[i] &gt; mx ) &#123;</div><div class="line">               mx = i + p[i];</div><div class="line">               id = i;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="keyword">int</span> m = <span class="number">0</span>, ii;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.size(); i++) &#123;</div><div class="line">           <span class="keyword">if</span> (p[i] &gt; m) &#123;</div><div class="line">               ii = i;</div><div class="line">               m = p[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       m--;</div><div class="line">       </div><div class="line">       <span class="built_in">string</span> ans = <span class="string">""</span>;</div><div class="line">       <span class="comment">//cout &lt;&lt; m &lt;&lt; " " &lt;&lt; ii &lt;&lt;endl;</span></div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = ii - m; i &lt;= ii + m; i++) &#123;</div><div class="line">           <span class="keyword">if</span> (str[i] != <span class="string">'#'</span>)</div><div class="line">               ans += str[i];</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="comment">//cout &lt;&lt; ans &lt;&lt; endl;</span></div><div class="line">       <span class="keyword">return</span> ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/" data-id="cis5rbut50001m4l1sbtv0118" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/" data-id="cis5z43xd0002kol18dsc2nxi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -155,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/僵尸进程/" data-id="cis5rbusz0000m4l1un71o88g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/18/僵尸进程/" data-id="cis5z43wx0000kol15fdb84c1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,6 +237,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/08/22/分布式图计算系统中Push和Pull两种通信方式解析/">分布式图计算系统中Push和Pull两种通信方式解析</a>
+          </li>
         
           <li>
             <a href="/2016/08/19/最大回文子串算法-Manacher/">最大回文子串算法-Manacher</a>
