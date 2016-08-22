@@ -83,19 +83,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Push通信模型"><a href="#Push通信模型" class="headerlink" title="Push通信模型"></a>Push通信模型</h1><ul>
+        <h2 id="Push通信模型"><a href="#Push通信模型" class="headerlink" title="Push通信模型"></a>Push通信模型</h2><ul>
 <li>当vertex有更新时，该vertex就会把自己的更新信息通过通信传递给在其它worker节点上的mirror vertex。随后主vertex和mirror vertex会遍历其出边，将更新信息传递给出边的邻vertices。典型的代表系统：Pregel。</li>
 </ul>
-<h1 id="Pull通信模型"><a href="#Pull通信模型" class="headerlink" title="Pull通信模型"></a>Pull通信模型</h1><ul>
+<h2 id="Pull通信模型"><a href="#Pull通信模型" class="headerlink" title="Pull通信模型"></a>Pull通信模型</h2><ul>
 <li>首先所有的vertices（包括主vertex，mirror vertex）都会在本地遍历其入边，计算更新信息，然后mirror vertex将它们的跟新信息传递给其主vertex。典型的代表系统：PowerGraph。</li>
 </ul>
-<p>如图，展示了Push和Pull两种通信计算模型（左图为Push，右图为Pull）。</p>
+<p>如图，展示了Push和Pull两种通信计算模型（左图为Push，右图为Pull，图片引自Gemini(OSDI’16)）。</p>
 <p><img src="./img/push&amp;pull.png" alt="Push和Pull通信计算模型图"></p>
+<h2 id="两种模型的比较"><a href="#两种模型的比较" class="headerlink" title="两种模型的比较"></a>两种模型的比较</h2><ul>
+<li>下图展示了分别用以上两种计算模型运行PageRank算法和WCC（Weakly Connected Components）算法的结果，从图中可以看出对于PageRank算法而言，由于每次迭代有效地活跃边占图中总的比重一直比较大，使用Pull的性能要远好于使用Push，对于WCC而言，在开始几次迭代，活跃的边数较多，Pull模型的性能更好，随着算法加速收敛，活跃边数急剧减少，Push的性能更加。</li>
+</ul>
+<p><img src="./img/alg.png" alt="Push和Pull通信计算模型在PR和WCC上性能比较"></p>
+<ul>
+<li>Push在活跃边数比重很大的情况下，由于其更新消息，会在vertex的update上产生很严重的data contention，极大地影响了性能。而Pull模型在活跃边数很少的情况下，需要每次都在每一个点计算更新，计算开销较大。综合以上观察，Gemini提出基于活跃边稀疏还是稠密自适应使用push和pull计算模型的方法，取得了较好的效果。</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/22/分布式图计算系统中Push和Pull两种通信方式解析/" data-id="cis5z7snh0001b0l1bk4qbrlz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/22/分布式图计算系统中Push和Pull两种通信方式解析/" data-id="cis601zvt0001vsl1pz9jnfzg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -127,7 +134,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="求字符串的最长回文子串的线性算法–Manacher算法"><a href="#求字符串的最长回文子串的线性算法–Manacher算法" class="headerlink" title="求字符串的最长回文子串的线性算法–Manacher算法"></a>求字符串的最长回文子串的线性算法–Manacher算法</h1><ul>
+        <h2 id="求字符串的最长回文子串的线性算法–Manacher算法"><a href="#求字符串的最长回文子串的线性算法–Manacher算法" class="headerlink" title="求字符串的最长回文子串的线性算法–Manacher算法"></a>求字符串的最长回文子串的线性算法–Manacher算法</h2><ul>
 <li>首先对原字符串进行改造，比如对字符创“12345”改造之后，变成“$#1#2#3#4#5#”，第一个字符‘$’用于边界的判断，而字符‘#’的引入则是可以将原字符串转化成一个偶数的字符串（不包括‘$’），这样的好处就是转化之后的字符串的字符个数一定为奇数（不包含’$’），就可以不必分情况讨论原字符串为奇数和偶数的情况。</li>
 <li>算法中引入数组变量p[i]，用于记录以第i个字符为中心的回文子串向左/向右的长度（包括i位置上字符），另外使用变量id来记录最大回文子串的中心位置，mx记录id+p[id]，即该最大回文子串的上边界。</li>
 <li><p>对于每个字符，进行判断：</p>
@@ -145,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/" data-id="cis5z7som0002b0l19l8wwpph" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/" data-id="cis601zvx0002vsl1hgd8cl1o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/18/僵尸进程/" data-id="cis5z7sn00000b0l18m235aic" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/18/僵尸进程/" data-id="cis601zvg0000vsl1biudt1ft" class="article-share-link">Share</a>
       
       
     </footer>
