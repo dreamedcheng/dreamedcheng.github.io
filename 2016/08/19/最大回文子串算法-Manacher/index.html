@@ -15,7 +15,7 @@
 <meta property="og:description" content="求字符串的最长回文子串的线性算法–Manacher算法
 首先对原字符串进行改造，比如对字符创“12345”改造之后，变成“$#1#2#3#4#5#”，第一个字符‘$’用于边界的判断，而字符‘#’的引入则是可以将原字符串转化成一个偶数的字符串（不包括‘$’），这样的好处就是转化之后的字符串的字符个数一定为奇数（不包含’$’），就可以不必分情况讨论原字符串为奇数和偶数的情况。
 算法中引入数组变量p[i">
-<meta property="og:updated_time" content="2016-08-22T07:49:36.351Z">
+<meta property="og:updated_time" content="2016-08-22T07:52:01.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大回文子串算法-Manacher">
 <meta name="twitter:description" content="求字符串的最长回文子串的线性算法–Manacher算法
@@ -104,12 +104,12 @@
 <ul>
 <li>最后依次判断i+p[i]和i-p[i]的位置是否相等来更新p[i]的值。</li>
 </ul>
-<h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">string longestPalindrome(string s) &#123;</div><div class="line">	if (s.size() &lt; 2) return s;</div><div class="line">	string str(s.size()*2+3, '#');</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (s.size() &lt; <span class="number">2</span>) <span class="keyword">return</span> s;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/" data-id="cis5qt1kw0001okl1q4gr806y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/19/最大回文子串算法-Manacher/" data-id="cis5qvhug0001uwl14pyqifoa" class="article-share-link">Share</a>
       
       
     </footer>
