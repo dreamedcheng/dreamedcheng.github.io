@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>分布式图计算系统中Push和Pull两种通信方式解析 | Galaxy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Push通信模型
+当vertex有更新时，该vertex就会把自己的更新信息通过通信传递给在其它worker节点上的mirror vertex。随后主vertex和mirror vertex会遍历其出边，将更新信息传递给出边的邻vertices。典型的代表系统：Pregel。
+
+Pull通信模型
+首先所有的vertices（包括主vertex，mirror vertex）都会在本地遍历其入边，计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式图计算系统中Push和Pull两种通信方式解析">
+<meta property="og:url" content="http://yoursite.com/2016/08/22/分布式图计算系统中Push和Pull两种通信方式分析/index.html">
+<meta property="og:site_name" content="Galaxy">
+<meta property="og:description" content="Push通信模型
+当vertex有更新时，该vertex就会把自己的更新信息通过通信传递给在其它worker节点上的mirror vertex。随后主vertex和mirror vertex会遍历其出边，将更新信息传递给出边的邻vertices。典型的代表系统：Pregel。
+
+Pull通信模型
+首先所有的vertices（包括主vertex，mirror vertex）都会在本地遍历其入边，计算">
+<meta property="og:image" content="http://yoursite.com/./img/push&pull.png">
+<meta property="og:image" content="http://yoursite.com/./img/alg.png">
+<meta property="og:updated_time" content="2016-08-22T12:10:23.189Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分布式图计算系统中Push和Pull两种通信方式解析">
+<meta name="twitter:description" content="Push通信模型
+当vertex有更新时，该vertex就会把自己的更新信息通过通信传递给在其它worker节点上的mirror vertex。随后主vertex和mirror vertex会遍历其出边，将更新信息传递给出边的邻vertices。典型的代表系统：Pregel。
+
+Pull通信模型
+首先所有的vertices（包括主vertex，mirror vertex）都会在本地遍历其入边，计算">
+<meta name="twitter:image" content="http://yoursite.com/./img/push&pull.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Galaxy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Galaxy</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-分布式图计算系统中Push和Pull两种通信方式分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/22/分布式图计算系统中Push和Pull两种通信方式分析/" class="article-date">
+  <time datetime="2016-08-22T08:25:55.000Z" itemprop="datePublished">2016-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      分布式图计算系统中Push和Pull两种通信方式解析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Push通信模型"><a href="#Push通信模型" class="headerlink" title="Push通信模型"></a>Push通信模型</h2><ul>
+<li>当vertex有更新时，该vertex就会把自己的更新信息通过通信传递给在其它worker节点上的mirror vertex。随后主vertex和mirror vertex会遍历其出边，将更新信息传递给出边的邻vertices。典型的代表系统：Pregel。</li>
+</ul>
+<h2 id="Pull通信模型"><a href="#Pull通信模型" class="headerlink" title="Pull通信模型"></a>Pull通信模型</h2><ul>
+<li>首先所有的vertices（包括主vertex，mirror vertex）都会在本地遍历其入边，计算更新信息，然后mirror vertex将它们的跟新信息传递给其主vertex。典型的代表系统：PowerGraph。</li>
+</ul>
+<p>如图，展示了Push和Pull两种通信计算模型（左图为Push，右图为Pull，图片引自Gemini(OSDI’16)）。</p>
+<p><img src="./img/push&amp;pull.png" alt="Push和Pull通信计算模型图"></p>
+<h2 id="两种模型的比较"><a href="#两种模型的比较" class="headerlink" title="两种模型的比较"></a>两种模型的比较</h2><ul>
+<li>下图展示了分别用以上两种计算模型运行PageRank算法和CC（Connected Components）算法的结果，从图中可以看出对于PageRank算法而言，由于每次迭代有效地活跃边占图中总的比重一直比较大，使用Pull的性能要远好于使用Push，对于WCC而言，在开始几次迭代，活跃的边数较多，Pull模型的性能更好，随着算法加速收敛，活跃边数急剧减少，Push的性能更加。</li>
+</ul>
+<p><img src="./img/alg.png" alt="Push和Pull通信计算模型在PR和WCC上性能比较"></p>
+<ul>
+<li>Push在活跃边数比重很大的情况下，由于其更新消息，会在vertex的update上产生很严重的data contention，极大地影响了性能。而Pull模型在活跃边数很少的情况下，需要每次都在每一个点计算更新，计算开销较大。综合以上观察，Gemini提出基于活跃边稀疏还是稠密自适应使用push和pull计算模型的方法，取得了较好的效果。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/22/分布式图计算系统中Push和Pull两种通信方式分析/" data-id="cis606l8m0001egl1g25tj7um" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/19/最大回文子串算法-Manacher/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">最大回文子串算法-Manacher</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/22/分布式图计算系统中Push和Pull两种通信方式分析/">分布式图计算系统中Push和Pull两种通信方式解析</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/19/最大回文子串算法-Manacher/">最大回文子串算法-Manacher</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/18/僵尸进程/">僵尸进程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Dreamedcheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
